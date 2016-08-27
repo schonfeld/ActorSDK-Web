@@ -110,35 +110,6 @@ class GroupProfile extends Component {
     );
   }
 
-  renderToken() {
-    const { group: { adminId } } = this.props;
-    const { integrationToken } = this.state;
-    const myId = UserStore.getMyId();
-
-    if (adminId !== myId) {
-      return null;
-    }
-
-    return (
-      <li className="profile__list__item group_profile__integration no-p">
-        <Fold icon="power" iconClassName="icon--pink" title={<FormattedMessage id="integrationToken"/>}>
-
-          <div className="info info--light">
-            <p><FormattedMessage id="integrationTokenHint"/></p>
-            <a href="https://actor.readme.io/docs/simple-integration" target="_blank"><FormattedMessage id="integrationTokenHelp"/></a>
-          </div>
-
-          <textarea
-            className="textarea"
-            onClick={this.handleTokenSelect}
-            readOnly
-            row="3"
-            value={integrationToken}/>
-        </Fold>
-      </li>
-    );
-  }
-
   render() {
     const { group } = this.props;
     const { isNotificationsEnabled, message } = this.state;
@@ -179,8 +150,6 @@ class GroupProfile extends Component {
                 <GroupProfileMembers groupId={group.id} members={group.members}/>
               </Fold>
             </li>
-
-            {this.renderToken()}
           </ul>
         </Scrollbar>
       </div>

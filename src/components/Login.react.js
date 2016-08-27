@@ -7,7 +7,7 @@ import { Container } from 'flux/utils';
 import classnames from 'classnames';
 import SharedContainer from '../utils/SharedContainer';
 import { appName, AuthSteps } from '../constants/ActorAppConstants';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import LoginActionCreators from '../actions/LoginActionCreators';
 
@@ -130,27 +130,13 @@ class Login extends Component {
     return (
       <section className="login-new row center-xs middle-xs">
         <div className="login-new__welcome col-xs row center-xs middle-xs">
-          <img alt={`${this.appName} messenger`}
-               className="logo"
-               src="assets/images/logo.png"
-               srcSet="assets/images/logo@2x.png 2x"/>
-
           <article>
             <h1 className="login-new__heading">
-              <FormattedHTMLMessage id="login.welcome.header" values={{ appName: this.appName }}/>
+              <img alt={`${this.appName} messenger`}
+                   src="assets/images/logo.png"
+                   srcSet="assets/images/logo@2x.png 2x"/>
             </h1>
-
-            <FormattedHTMLMessage id="login.welcome.text" values={{ appName: this.appName }}/>
           </article>
-
-          <footer>
-            <div className="pull-left"><FormattedMessage id="login.welcome.copyright" values={{ appName: this.appName }}/></div>
-            <div className="pull-right">
-              <a href="//actorapp.ghost.io/desktop-apps">Desktop</a>&nbsp;&nbsp;•&nbsp;&nbsp;
-              <a href="//actor.im/ios">iPhone</a>&nbsp;&nbsp;•&nbsp;&nbsp;
-              <a href="//actor.im/android">Android</a>
-            </div>
-          </footer>
         </div>
 
         <div className="login-new__forms col-xs-6 col-md-4 row center-xs middle-xs">
@@ -162,7 +148,7 @@ class Login extends Component {
               <TextField className="login-new__forms__form__input input__material--wide"
                          disabled={isCodeRequested || step !== AuthSteps.LOGIN_WAIT}
                          errorText={errors.login}
-                         floatingLabel={intl.messages['login.phone_or_email']}
+                         floatingLabel={intl.messages['login.email']}
                          onChange={this.onLoginChange}
                          ref="login"
                          value={login}/>

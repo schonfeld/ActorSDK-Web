@@ -160,46 +160,6 @@ var GroupProfile = function (_Component) {
     });
   };
 
-  GroupProfile.prototype.renderToken = function renderToken() {
-    var adminId = this.props.group.adminId;
-    var integrationToken = this.state.integrationToken;
-
-    var myId = _UserStore2.default.getMyId();
-
-    if (adminId !== myId) {
-      return null;
-    }
-
-    return _react2.default.createElement(
-      'li',
-      { className: 'profile__list__item group_profile__integration no-p' },
-      _react2.default.createElement(
-        _Fold2.default,
-        { icon: 'power', iconClassName: 'icon--pink', title: _react2.default.createElement(_reactIntl.FormattedMessage, { id: 'integrationToken' }) },
-        _react2.default.createElement(
-          'div',
-          { className: 'info info--light' },
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(_reactIntl.FormattedMessage, { id: 'integrationTokenHint' })
-          ),
-          _react2.default.createElement(
-            'a',
-            { href: 'https://actor.readme.io/docs/simple-integration', target: '_blank' },
-            _react2.default.createElement(_reactIntl.FormattedMessage, { id: 'integrationTokenHelp' })
-          )
-        ),
-        _react2.default.createElement('textarea', {
-          className: 'textarea',
-          onClick: this.handleTokenSelect,
-          readOnly: true,
-          row: '3',
-          value: integrationToken })
-      )
-    );
-  };
-
   GroupProfile.prototype.render = function render() {
     var group = this.props.group;
     var _state = this.state;
@@ -255,8 +215,7 @@ var GroupProfile = function (_Component) {
               { iconElement: iconElement, title: message },
               _react2.default.createElement(_GroupProfileMembers2.default, { groupId: group.id, members: group.members })
             )
-          ),
-          this.renderToken()
+          )
         )
       )
     );

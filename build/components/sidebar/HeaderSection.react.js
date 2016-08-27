@@ -378,10 +378,6 @@ var HeaderSection = function (_Component) {
               ),
               _react2.default.createElement(_reactIntl.FormattedMessage, { id: 'menu.preferences' })
             ),
-            this.renderHelpLink(),
-            this.renderTwitterLink(),
-            this.renderFacebookLink(),
-            this.renderHomeLink(),
             _react2.default.createElement('li', { className: 'dropdown__menu__separator' }),
             _react2.default.createElement(
               'li',

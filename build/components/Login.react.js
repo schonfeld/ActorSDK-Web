@@ -189,48 +189,15 @@ var Login = function (_Component) {
       _react2.default.createElement(
         'div',
         { className: 'login-new__welcome col-xs row center-xs middle-xs' },
-        _react2.default.createElement('img', { alt: this.appName + ' messenger',
-          className: 'logo',
-          src: 'assets/images/logo.png',
-          srcSet: 'assets/images/logo@2x.png 2x' }),
         _react2.default.createElement(
           'article',
           null,
           _react2.default.createElement(
             'h1',
             { className: 'login-new__heading' },
-            _react2.default.createElement(_reactIntl.FormattedHTMLMessage, { id: 'login.welcome.header', values: { appName: this.appName } })
-          ),
-          _react2.default.createElement(_reactIntl.FormattedHTMLMessage, { id: 'login.welcome.text', values: { appName: this.appName } })
-        ),
-        _react2.default.createElement(
-          'footer',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'pull-left' },
-            _react2.default.createElement(_reactIntl.FormattedMessage, { id: 'login.welcome.copyright', values: { appName: this.appName } })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'pull-right' },
-            _react2.default.createElement(
-              'a',
-              { href: '//actorapp.ghost.io/desktop-apps' },
-              'Desktop'
-            ),
-            '  •  ',
-            _react2.default.createElement(
-              'a',
-              { href: '//actor.im/ios' },
-              'iPhone'
-            ),
-            '  •  ',
-            _react2.default.createElement(
-              'a',
-              { href: '//actor.im/android' },
-              'Android'
-            )
+            _react2.default.createElement('img', { alt: this.appName + ' messenger',
+              src: 'assets/images/logo.png',
+              srcSet: 'assets/images/logo@2x.png 2x' })
           )
         )
       ),
@@ -256,7 +223,7 @@ var Login = function (_Component) {
             _react2.default.createElement(_TextField2.default, { className: 'login-new__forms__form__input input__material--wide',
               disabled: isCodeRequested || step !== _ActorAppConstants.AuthSteps.LOGIN_WAIT,
               errorText: errors.login,
-              floatingLabel: intl.messages['login.phone_or_email'],
+              floatingLabel: intl.messages['login.email'],
               onChange: this.onLoginChange,
               ref: 'login',
               value: login }),

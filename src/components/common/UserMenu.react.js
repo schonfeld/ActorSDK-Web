@@ -228,10 +228,6 @@ class UserMenu extends Component {
             <i className="material-icons">settings</i>
             <FormattedMessage id="menu.preferences"/>
           </li>
-          {this.renderHelpLink()}
-          {this.renderTwitterLink()}
-          {this.renderFacebookLink()}
-          {this.renderHomeLink()}
 
           <li className="dropdown__menu__separator"/>
 

@@ -242,11 +242,6 @@ class HeaderSection extends Component {
                 <FormattedMessage id="menu.preferences"/>
               </li>
 
-              {this.renderHelpLink()}
-              {this.renderTwitterLink()}
-              {this.renderFacebookLink()}
-              {this.renderHomeLink()}
-
               <li className="dropdown__menu__separator"/>
               <li className="dropdown__menu__item" onClick={this.setLogout}>
                 <FormattedMessage id="menu.signOut"/>
