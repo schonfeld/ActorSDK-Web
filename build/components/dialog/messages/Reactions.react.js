@@ -68,7 +68,7 @@ var MessageReactions = function (_Component) {
     var canAnimateHeart = this.state.canAnimateHeart;
 
     var hasReactions = message.reactions.length > 0;
-    console.log("reactions", message.reactions);
+
     var counter = void 0;
     var icon = _react2.default.createElement('i', { className: 'icon icon-favorite material-icons', onClick: this.handleAddLike });
     var reactionsClassName = 'message__actions__like';
@@ -89,8 +89,9 @@ var MessageReactions = function (_Component) {
       if (message.reactions[0].uids.length > 0) {
         counter = _react2.default.createElement(
           'span',
-          { className: 'counter', key: 1 },
-          message.reactions[0].uids.length
+          { className: 'counter liked_by_enum', key: 1 },
+          'Liked by: ',
+          message.reactions[0].uids.join(", ")
         );
       } else {
         counter = null;

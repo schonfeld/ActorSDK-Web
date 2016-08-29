@@ -46,7 +46,7 @@ class MessageReactions extends Component {
     const { message } = this.props;
     const { canAnimateHeart } = this.state;
     const hasReactions = message.reactions.length > 0;
-console.log("reactions", message.reactions)
+
     let counter;
     let icon = <i className="icon icon-favorite material-icons" onClick={this.handleAddLike}></i>;
     let reactionsClassName = 'message__actions__like';
@@ -65,7 +65,7 @@ console.log("reactions", message.reactions)
       }
 
       if (message.reactions[0].uids.length > 0) {
-        counter = <span className="counter" key={1}>{message.reactions[0].uids.length}</span>;
+        counter = <span className="counter liked_by_enum" key={1}>Liked by: {message.reactions[0].uids.join(", ")}</span>;
       } else {
         counter = null
       }
