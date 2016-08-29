@@ -68,7 +68,7 @@ var MessageReactions = function (_Component) {
     var canAnimateHeart = this.state.canAnimateHeart;
 
     var hasReactions = message.reactions.length > 0;
-
+    console.log("reactions", message.reactions);
     var counter = void 0;
     var icon = _react2.default.createElement('i', { className: 'icon icon-favorite material-icons', onClick: this.handleAddLike });
     var reactionsClassName = 'message__actions__like';

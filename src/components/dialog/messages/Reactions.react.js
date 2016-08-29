@@ -46,7 +46,7 @@ class MessageReactions extends Component {
     const { message } = this.props;
     const { canAnimateHeart } = this.state;
     const hasReactions = message.reactions.length > 0;
-
+console.log("reactions", message.reactions)
     let counter;
     let icon = <i className="icon icon-favorite material-icons" onClick={this.handleAddLike}></i>;
     let reactionsClassName = 'message__actions__like';
