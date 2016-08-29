@@ -5,8 +5,10 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-
 import MessageActionCreators from '../../../actions/MessageActionCreators';
+
+import Tooltip from 'rc-tooltip';
+import ActorClient from '../../../utils/ActorClient';
 
 class MessageReactions extends Component {
   static propTypes = {
@@ -50,6 +52,7 @@ class MessageReactions extends Component {
     let counter;
     let icon = <i className="icon icon-favorite material-icons" onClick={this.handleAddLike}></i>;
     let reactionsClassName = 'message__actions__like';
+    let likers = '(nobody)';
 
     if (hasReactions) {
       const amILikeThat = message.reactions[0].isOwnSet;
@@ -65,7 +68,8 @@ class MessageReactions extends Component {
       }
 
       if (message.reactions[0].uids.length > 0) {
-        counter = <span className="counter liked_by_enum" key={1}>Liked by: {message.reactions[0].uids.join(", ")}</span>;
+        likers = message.reactions[0].uids.map(uid => ActorClient.getUser(uid)).map(user => user.nick || user.name || user.id).join(", ")
+        counter = <span className="counter" key={1}>{message.reactions[0].uids.length}</span>;
       } else {
         counter = null
       }
@@ -73,10 +77,18 @@ class MessageReactions extends Component {
 
     return (
       <div className={reactionsClassName}>
-        <CSSTransitionGroup transitionName="counter" transitionEnterTimeout={125} transitionLeaveTimeout={100}>
-          {counter}
-        </CSSTransitionGroup>
-        {icon}
+        <Tooltip
+          placement="left"
+          mouseEnterDelay={0}
+          mouseLeaveDelay={0}
+          overlay={`Liked by: ${likers}`}>
+          <div>
+            <CSSTransitionGroup transitionName="counter" transitionEnterTimeout={125} transitionLeaveTimeout={100}>
+              {counter}
+            </CSSTransitionGroup>
+            {icon}
+          </div>
+        </Tooltip>
       </div>
     )
   }
