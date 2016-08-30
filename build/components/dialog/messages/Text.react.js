@@ -22,13 +22,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Copyright (C) 2015-2016 Actor LLC. <https://actor.im>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
+var youtubeRegEx = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+
 function processText(text) {
   var processedText = text;
+
+  if (youtubeRegEx.test(processedText)) {
+    var matches = youtubeRegEx.exec(text);
+    if (matches && matches.length == 2) {
+      return _react2.default.createElement('iframe', { src: "https://www.youtube.com/embed/" + matches[1], style: { width: "70%" }, frameBorder: '0', allowfullscreen: true });
+    }
+  }
+
   processedText = _ActorClient2.default.renderMarkdown(processedText);
   processedText = (0, _EmojiUtils.processEmojiText)(processedText);
   processedText = processedText.replace(/(@[0-9a-zA-Z_]{5,32})/ig, '<span class="message__mention">$1</span>');
 
-  return processedText;
+  return _react2.default.createElement('div', { className: 'text', dangerouslySetInnerHTML: { __html: processedText } });
 }
 
 var Text = function (_Component) {
@@ -49,7 +59,7 @@ var Text = function (_Component) {
     return _react2.default.createElement(
       'div',
       { className: className },
-      _react2.default.createElement('div', { className: 'text', dangerouslySetInnerHTML: { __html: processText(text) } })
+      processText(text)
     );
   };
 
