@@ -35,13 +35,16 @@ function processText(text) {
     }
   }
 
-  var giphyRegEx = /(gph.is\/)(.*)|(giphy.com\/gifs\/)(.*)/;
-
   // giphy
-  if (giphyRegEx.test(processedText)) {
-    var matches = giphyRegEx.exec(text);
+  var giphyRegex = /giphy.com\/gifs\/(?:[^-]*-)?([^\/]*)/; // long form urls are fine to convert
+
+  if (/gph.is\/(.*)/.exec(text)) {
+    return "I am a dumb idiot for using the giphy short url";
+  }
+
+  if (giphyRegex.test(processedText)) {
+    var matches = giphyRegex.exec(text);
     if (matches && matches.length == 2) {
-      console.log("giphy match hit");
       return _react2.default.createElement('iframe', { src: "//giphy.com/embed/" + matches[1], width: '480', height: '301', frameBorder: '0', 'class': 'giphy-embed', allowFullScreen: true });
     }
   }
