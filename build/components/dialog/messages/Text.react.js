@@ -27,10 +27,22 @@ var youtubeRegEx = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=
 function processText(text) {
   var processedText = text;
 
+  // youtube
   if (youtubeRegEx.test(processedText)) {
     var matches = youtubeRegEx.exec(text);
     if (matches && matches.length == 2) {
       return _react2.default.createElement('iframe', { src: "https://www.youtube.com/embed/" + matches[1], style: { width: "70%" }, frameBorder: '0', allowfullscreen: true });
+    }
+  }
+
+  var giphyRegEx = /(gph.is\/)(.*)|(giphy.com\/gifs\/)(.*)/;
+
+  // giphy
+  if (giphyRegEx.test(processedText)) {
+    var matches = giphyRegEx.exec(text);
+    if (matches && matches.length == 2) {
+      console.log("giphy match hit");
+      return _react2.default.createElement('iframe', { src: "//giphy.com/embed/" + matches[1], width: '480', height: '301', frameBorder: '0', 'class': 'giphy-embed', allowFullScreen: true });
     }
   }
 
