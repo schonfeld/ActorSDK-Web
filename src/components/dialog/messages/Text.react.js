@@ -21,7 +21,7 @@ function processText(text) {
   }
 
   // giphy
-  var giphyRegex = /giphy.com\/gifs\/(?:[^-]*-)?([^\/]*)/ // long form urls are fine to convert
+  var giphyRegex = /giphy.com\/gifs\/([^\/]*)/ // long form urls are fine to convert
 
   if (/gph.is\/(.*)/.exec(text)) { return "I am a dumb idiot for using the giphy short url"; }
 
