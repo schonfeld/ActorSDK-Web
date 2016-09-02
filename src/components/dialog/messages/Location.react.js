@@ -6,6 +6,7 @@ import React, { Component, PropTypes } from 'react';
 import ActorClient from '../../../utils/ActorClient';
 
 const MAP_SIZE = '300x100';
+const GOOGLEY_KEY = 'AIzaSyCEpqV_J_-tFMJBnA3FqAjMck1Cc0qYmQc';
 
 /**
  * Class that represent a component for display location messages content
@@ -40,7 +41,7 @@ class Location extends Component {
       <div className={className}>
         <div className="location" onClick={this.handleMapClick}>
           <img
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=15&size=${MAP_SIZE}&scale=2&maptype=roadmap&markers=color:red%7C${latitude},${longitude}`}
+            src={`https://maps.googleapis.com/maps/api/staticmap?key=${GOOGLEY_KEY}&center=${latitude},${longitude}&zoom=15&size=${MAP_SIZE}&scale=2&maptype=roadmap&markers=color:red%7C${latitude},${longitude}`}
             alt="Location"
           />
         </div>
